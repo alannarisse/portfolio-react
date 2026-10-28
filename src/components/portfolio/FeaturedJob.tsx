@@ -31,7 +31,7 @@ export function FeaturedJob({ job, reverse }: { job: Job; reverse?: boolean }) {
             <Block title="My role">{cs.role}</Block>
             <Block title="The challenge">{cs.challenge}</Block>
             <div>
-              <h4 className="eyebrow">QA & testing approach</h4>
+              <h4 className="eyebrow">{cs.approachTitle ?? "QA & testing approach"}</h4>
               <ul className="mt-3 space-y-2">
                 {cs.approach.map((a) => <li key={a} className="flex gap-3"><span className="text-primary">✓</span>{a}</li>)}
               </ul>

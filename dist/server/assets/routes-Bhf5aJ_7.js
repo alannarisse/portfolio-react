@@ -229,19 +229,42 @@ var otherJobs = [
 		img: `${A}/design/button1.jpg`
 	}
 ];
+var featuredProjects = [{
+	id: "send-a-boop",
+	name: "Send a Boop",
+	url: "https://sendaboop.app/",
+	tagline: "A little kindness, delivered: choose a dog or cat photo, add a personal message, and email it to a friend.",
+	desktop: `${A}/thumbs/sendaboop.png`,
+	mobile: `${A}/design/sendaboop-mobile.png`,
+	stack: [
+		"Expo",
+		"React Native",
+		"TypeScript",
+		"Express",
+		"Resend",
+		"Playwright"
+	],
+	caseStudy: {
+		overview: "Send a Boop is a personal project for sending a small, thoughtful message with an animal photo. One Expo project supports the web app and native mobile interface, with a separate Express API handling verification and email delivery.",
+		role: "Design, development, and testing of a personal cross-platform app, with AI-assisted development using Claude and Figma Make.",
+		challenge: "Keep the experience playful and simple while handling real email delivery, sender verification, form validation, and the constraints of small screens and mobile keyboards.",
+		approachTitle: "Build & testing approach",
+		approach: [
+			"Built the photo-selection and message flow with Expo, React Native, and TypeScript, including an optional message limited to 280 characters.",
+			"Added sender email verification through signed, expiring links before delivering the message to the recipient.",
+			"Used a separate Node.js/Express API with Resend for email, with rate limits on sending and verification endpoints.",
+			"Addressed iPhone keyboard dismissal, keyboard-aware scrolling, and safe-area navigation so the form remains usable on mobile.",
+			"Added Playwright coverage for image selection, required fields, email validation, message limits, submission, API errors, and the contact form."
+		],
+		results: [
+			"Web app hosted on Vercel, with its API hosted on Railway.",
+			"iOS app in TestFlight testing, with Android configuration included in the project.",
+			"A complete photo-to-verified-email flow, with a way for recipients to send a boop back."
+		],
+		gallery: []
+	}
+}];
 var projects = [
-	{
-		name: "Send a Boop",
-		url: "https://sendaboop.app/",
-		img: `${A}/thumbs/sendaboop.png`,
-		desc: "Send cute animal pics to friends.",
-		stack: [
-			"Expo",
-			"React",
-			"MySQL",
-			"AI-assisted"
-		]
-	},
 	{
 		name: "Quote Keeper",
 		url: "https://quote-keeper.com/",
@@ -338,6 +361,197 @@ var writing = [
 		url: "https://substack.com/@bananaphone/p-164679697"
 	}
 ];
+var testimonials = [
+	{
+		"quote": "I hope, someday, to be as interesting as Alanna Risse.",
+		"by": "The Most Interesting Man in the World"
+	},
+	{
+		"quote": "Alanna is a fabricator of absurdity. She pushes life into the delicate balance between truth and humor often resulting in beautiful disharmony. Alanna is unusually driven and wonderfully unusual in that she can accomplish and learn anything that is put in front of her.",
+		"by": "Liz Randall"
+	},
+	{
+		"quote": "Alanna is a rare mix of skill, determination, and goof. Her technical chops are top-notch, and she is able to learn new skills with speed and grace. She puts her heart into her work.",
+		"by": "Lucas Haley"
+	},
+	{
+		"quote": "Alanna knows front-end/templates better than anybody. And she gets the job done well and gets it done fast.",
+		"by": "Alan Peters"
+	},
+	{
+		"quote": "Alanna is a tremendous asset to any company she works for. Not only is she incredibly technically savvy, she's extremely creative and can come up with new, better solutions to existing problems. I loved working with her and someday hope I get the chance to work with Alanna again.",
+		"by": "Lynn Beighley"
+	},
+	{
+		"quote": "Alanna was the life and soul of the party at Apple in Cork when she was seconded from \"home base\" Cupertino for a period of time. It was great to have such positive experience, especially in the Multimedia Application Space, in the group and it is no surprise that she has gone on to bigger and better things in the last 10 years.",
+		"by": "Gavin Costello"
+	},
+	{
+		"quote": "Hey you! Wanted to let you know that over the years this has always been true: Whenever I see your name pop up, I smile. You're one of the warmest, funniest people I've ever come across. Thanks for reminding me you're still around! Made my day a little brighter.",
+		"by": "Michael Hujsak, collegue at Apple 1995-97"
+	},
+	{
+		"quote": "Good, timely work; cheerful in the face of adversity, a pleasure to work with and be around. All-around skilled as well as talented.",
+		"by": "Kaolin Fire"
+	},
+	{
+		"quote": "Alanna = 1, React Forms = 0",
+		"by": "Alanna Risse"
+	},
+	{
+		"quote": "I’ve known Alanna for nearly a decade now and, honestly, my life just keeps getting better. I mean, I don’t actually KNOW know her (like in the biblical sense) but she breathed on me once back in art school and I was totally into it. Pretty sure she was too. What I mean is she changed my life. Made me sparkly and intoxicating. Everywhere I go, people adore me... but Alanna loved me first. I’m forever changed and forever grateful.",
+		"by": "Angela Simione"
+	},
+	{
+		"quote": "I can't explain enough how impactful you have been to me as a colleague and guide for our students!!",
+		"by": "Emma Holland"
+	},
+	{
+		"quote": "Thank you for all of your help during the term and introducing us into the bumpy, breezy bike ride of coding, stay awesome!",
+		"by": "Brandon Pahnish, Student, PSU"
+	},
+	{
+		"quote": "Alanna so sad to hear this!! Absolute best of luck in everything you do, loved when we had the opportunity to chat over zoom recently about your involvement with the programs :orange_heart: thank you for everything you've done for the programs!! -Linda, Thinkful Educator Recruiter",
+		"by": "Linda Huard  1/27/21 Thinkful Educator Recruiter"
+	},
+	{
+		"quote": "I/others on my team are heartbroken by your announcement. I hope, hope, hope that your next adventure is off to a great start!",
+		"by": "Nicholas Martin  12:21 PM Academic Success Manager"
+	},
+	{
+		"quote": "I will absolutely miss you - your feedback and support have really helped me grow as a designer. I’ll send you a celebration message when I graduate :party-blob: Best of luck with starting your new endeavors!",
+		"by": "Jennifer Lundeen  12:24 PM Mentee Bloc UX/UI program"
+	},
+	{
+		"quote": "It was a wild year, but i'm doing well, and a large part of that is because of the job I was able to land. So I truly appreciate everything you taught me, and making that opportunity possible. -Alex N Walters, Mentee, Thinkful",
+		"by": "alex walters 1/28/21"
+	},
+	{
+		"quote": "Thank you for all that you've done for Thinkful @Alanna Risse :orange_heart: all the best to you in your ventures beyond here!!",
+		"by": "--Kara Gillette Manager of Outcomes Specialists"
+	},
+	{
+		"quote": "Alanna so sad to hear you are leaving!! Absolute best of luck in everything you do, loved when we had the opportunity to chat over zoom recently about your involvement with the programs :orange_heart: thank you for everything you've done for the programs!!",
+		"by": "--Linda Huard Educator Recruiter"
+	},
+	{
+		"quote": "Alanna is a fantastic teacher and mentor. Having a tremendous amount of experience in web development and art she can provide an answer and a resource for every question you might have. I've received a lot of knowledge about the use of typefaces, colors, design tools, as well as working with GitHub, programming in HTML, CSS, JS etc. from our meetings. I highly recommend Alanna as a mentor and a teacher!",
+		"by": "--Inna Beltcova, Associate UX Designer at AllScripts March 2019"
+	},
+	{
+		"quote": "Thank you so much! I appreciate all that you have done!",
+		"by": "Jenny Wong feb 22, 2021"
+	},
+	{
+		"quote": "Thanks for the awesome two classes Alanna! As frustrating has coding has been, it's been a good experience to have with you as my teacher. I hope you have a great spring break!",
+		"by": "Anitra Meyer 3/16/21"
+	},
+	{
+		"quote": "I wanted to connect with you and say thanks again for mentoring me through the Thinkful pre-work. I recently graduated from General Assembly's software engineering program and thought about how helpful you were at the beginning of my journey and just wanted to say thanks!",
+		"by": "Sarah Moe 11/30/21"
+	},
+	{
+		"quote": "I am learning a lot and your videos are super super helpful, I can't thank you enough for recording the classes and creating more videos to explain harder concepts.",
+		"by": "Haley Watts 2/18/22"
+	},
+	{
+		"quote": "This class has been super rewarding for me! I had a lot of fun and learned a lot 🥳🥳 Thank you Alanna!",
+		"by": "Haley Watts 3/7/22"
+	},
+	{
+		"quote": "Alanna, You're amazing!!! What an awesome and hilarious and touching and generous and thoughtful gift you dropped off for me today. When I walked into the office, all my coworkers were dancing and singing and clapping and giving me a standing ovation as they pointed to my desk and showed me what you brought. It was both crazy embarrassing and amazingly awesome at the same time. Thank you for thinking of me!",
+		"by": "Dennis Howe PT 4/26/2022"
+	},
+	{
+		"quote": "I have really been enjoying your class and you’ve quickly become one of my favorite professors!",
+		"by": "Sam Baltierra 10/30/22"
+	}
+];
+//#endregion
+//#region src/components/portfolio/RotatingQuote.tsx
+function RotatingQuote() {
+	const [index, setIndex] = useState(0);
+	const [paused, setPaused] = useState(true);
+	const [hovered, setHovered] = useState(false);
+	useEffect(() => {
+		const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+		setPaused(preference.matches);
+		const onChange = () => {
+			if (preference.matches) setPaused(true);
+		};
+		preference.addEventListener("change", onChange);
+		return () => preference.removeEventListener("change", onChange);
+	}, []);
+	useEffect(() => {
+		if (paused || hovered) return;
+		const timer = window.setInterval(() => {
+			setIndex((current) => (current + 1) % testimonials.length);
+		}, 15e3);
+		return () => window.clearInterval(timer);
+	}, [paused, hovered]);
+	const quote = testimonials[index];
+	const step = (direction) => {
+		setPaused(true);
+		setIndex((current) => (current + direction + testimonials.length) % testimonials.length);
+	};
+	return /* @__PURE__ */ jsxs("section", {
+		"aria-label": "Testimonials",
+		"aria-roledescription": "carousel",
+		className: "rounded-xl border-l-2 border-primary bg-card p-6",
+		onMouseEnter: () => setHovered(true),
+		onMouseLeave: () => setHovered(false),
+		onFocusCapture: (event) => {
+			if (!event.currentTarget.contains(event.relatedTarget)) setPaused(true);
+		},
+		children: [/* @__PURE__ */ jsx("div", {
+			"aria-live": paused ? "polite" : "off",
+			"aria-atomic": "true",
+			children: /* @__PURE__ */ jsxs("blockquote", { children: [/* @__PURE__ */ jsxs("p", {
+				className: "whitespace-pre-line italic",
+				children: [
+					"“",
+					quote.quote,
+					"”"
+				]
+			}), /* @__PURE__ */ jsxs("footer", {
+				className: "mt-3 text-sm text-muted-foreground",
+				children: ["— ", quote.by]
+			})] })
+		}), /* @__PURE__ */ jsxs("div", {
+			className: "mt-5 flex flex-wrap items-center gap-3 text-sm",
+			children: [
+				/* @__PURE__ */ jsx("button", {
+					type: "button",
+					onClick: () => step(-1),
+					"aria-label": "Previous quote",
+					className: "btn-ghost",
+					children: "← Previous"
+				}),
+				/* @__PURE__ */ jsx("button", {
+					type: "button",
+					onClick: () => step(1),
+					"aria-label": "Next quote",
+					className: "btn-ghost",
+					children: "Next →"
+				}),
+				/* @__PURE__ */ jsx("button", {
+					type: "button",
+					onClick: () => setPaused((value) => !value),
+					className: "btn-ghost",
+					children: paused ? "Play quotes" : "Pause quotes"
+				}),
+				/* @__PURE__ */ jsxs("span", {
+					className: "text-muted-foreground",
+					children: [
+						index + 1,
+						" / ",
+						testimonials.length
+					]
+				})
+			]
+		})]
+	});
+}
 //#endregion
 //#region src/components/portfolio/ThemeToggle.tsx
 function ThemeToggle() {
@@ -476,7 +690,7 @@ function FeaturedJob({ job, reverse }) {
 						}),
 						/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h4", {
 							className: "eyebrow",
-							children: "QA & testing approach"
+							children: cs.approachTitle ?? "QA & testing approach"
 						}), /* @__PURE__ */ jsx("ul", {
 							className: "mt-3 space-y-2",
 							children: cs.approach.map((a) => /* @__PURE__ */ jsxs("li", {
@@ -605,14 +819,23 @@ function Index() {
 								}),
 								/* @__PURE__ */ jsxs("h1", {
 									className: "mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.05] md:text-7xl",
-									children: ["QA Engineer & Software Engineer ", /* @__PURE__ */ jsx("span", {
-										className: "text-primary",
-										children: "in Test"
-									})]
+									children: [
+										"I naturally look at ",
+										/* @__PURE__ */ jsx("span", {
+											className: "text-primary",
+											children: "the big picture"
+										}),
+										" and find solutions ",
+										/* @__PURE__ */ jsx("span", {
+											className: "text-primary",
+											children: "holistically"
+										}),
+										" rather than symptomatically."
+									]
 								}),
 								/* @__PURE__ */ jsx("p", {
 									className: "mt-8 max-w-2xl text-lg text-muted-foreground",
-									children: "I'm Alanna Risse. I've spent 15+ years building and shipping websites for brands like West Elm and Timbuk2 — now I focus on breaking them before users do: test automation with Playwright, accessibility audits, and release confidence."
+									children: "I'm Alanna Risse. I've worked across the entire product lifecycle, from design to development to testing, which means I catch things specialists miss."
 								}),
 								/* @__PURE__ */ jsxs("div", {
 									className: "mt-10 flex flex-wrap gap-3",
@@ -708,44 +931,54 @@ function Index() {
 							})
 						]
 					}),
-					/* @__PURE__ */ jsx(Section, {
+					/* @__PURE__ */ jsxs(Section, {
 						id: "projects",
 						eyebrow: "Personal projects",
 						title: "Things I've built lately",
-						children: /* @__PURE__ */ jsx("div", {
-							className: "grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
-							children: projects.map((p) => /* @__PURE__ */ jsxs("a", {
-								href: p.url,
-								target: "_blank",
-								rel: "noreferrer",
-								className: "card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card",
-								children: [/* @__PURE__ */ jsx("img", {
-									src: p.img,
-									alt: p.name,
-									loading: "lazy",
-									className: "aspect-[4/3] w-full object-cover object-top"
-								}), /* @__PURE__ */ jsxs("div", {
-									className: "flex flex-1 flex-col p-5",
-									children: [
-										/* @__PURE__ */ jsx("h3", {
-											className: "font-display font-semibold group-hover:text-primary",
-											children: p.name
-										}),
-										/* @__PURE__ */ jsx("p", {
-											className: "mt-1 flex-1 text-sm text-muted-foreground",
-											children: p.desc
-										}),
-										/* @__PURE__ */ jsx("ul", {
-											className: "mt-4 flex flex-wrap gap-1.5",
-											children: p.stack.map((s) => /* @__PURE__ */ jsx("li", {
-												className: "chip text-xs",
-												children: s
-											}, s))
-										})
-									]
-								})]
-							}, p.name))
-						})
+						children: [
+							/* @__PURE__ */ jsx("div", {
+								className: "space-y-10",
+								children: featuredProjects.map((project) => /* @__PURE__ */ jsx(FeaturedJob, { job: project }, project.id))
+							}),
+							/* @__PURE__ */ jsx("h3", {
+								className: "mt-16 font-display text-2xl font-semibold",
+								children: "More personal projects"
+							}),
+							/* @__PURE__ */ jsx("div", {
+								className: "mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
+								children: projects.map((p) => /* @__PURE__ */ jsxs("a", {
+									href: p.url,
+									target: "_blank",
+									rel: "noreferrer",
+									className: "card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card",
+									children: [/* @__PURE__ */ jsx("img", {
+										src: p.img,
+										alt: p.name,
+										loading: "lazy",
+										className: "aspect-[4/3] w-full object-cover object-top"
+									}), /* @__PURE__ */ jsxs("div", {
+										className: "flex flex-1 flex-col p-5",
+										children: [
+											/* @__PURE__ */ jsx("h3", {
+												className: "font-display font-semibold group-hover:text-primary",
+												children: p.name
+											}),
+											/* @__PURE__ */ jsx("p", {
+												className: "mt-1 flex-1 text-sm text-muted-foreground",
+												children: p.desc
+											}),
+											/* @__PURE__ */ jsx("ul", {
+												className: "mt-4 flex flex-wrap gap-1.5",
+												children: p.stack.map((s) => /* @__PURE__ */ jsx("li", {
+													className: "chip text-xs",
+													children: s
+												}, s))
+											})
+										]
+									})]
+								}, p.name))
+							})
+						]
 					}),
 					/* @__PURE__ */ jsx(Section, {
 						id: "teaching",
@@ -780,16 +1013,7 @@ function Index() {
 										className: "mt-1 text-sm text-muted-foreground",
 										children: t.venue
 									})] })]
-								}, t.title)), /* @__PURE__ */ jsxs("blockquote", {
-									className: "rounded-xl border-l-2 border-primary bg-card p-6",
-									children: [/* @__PURE__ */ jsx("p", {
-										className: "italic",
-										children: "\"Thanks again for mentoring me through the Thinkful pre-work. I recently graduated from General Assembly's software engineering program and thought about how helpful you were at the beginning of my journey.\""
-									}), /* @__PURE__ */ jsx("footer", {
-										className: "mt-3 text-sm text-muted-foreground",
-										children: "— Sarah Moe, 2021"
-									})]
-								})]
+								}, t.title)), /* @__PURE__ */ jsx(RotatingQuote, {})]
 							})]
 						})
 					}),

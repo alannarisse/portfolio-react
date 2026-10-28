@@ -1,5 +1,6 @@
+import { RotatingQuote } from "@/components/portfolio/RotatingQuote";
 import { createFileRoute } from "@tanstack/react-router";
-import { featuredJobs, links, otherJobs, projects, skills, talks, writing } from "@/data/portfolio";
+import { featuredJobs, featuredProjects, links, otherJobs, projects, skills, talks, writing } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
 import { FeaturedJob } from "@/components/portfolio/FeaturedJob";
 
@@ -51,14 +52,12 @@ function Index() {
       <main id="top">
         <section className="hero-glow">
           <div className="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
-            <p className="eyebrow">Remote, Portland, Oregon · Open to roles</p>
-            <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.05] md:text-7xl">
-              QA Engineer &amp; Software Engineer <span className="text-primary">in Test</span>
+            <p className="eyebrow">Remote, Portland, Oregon · Open to Development roles</p>
+            <h1 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.05] md:text-6xl">
+              I naturally look at <span className="text-primary">the big picture</span> and find solutions <span className="text-primary">holistically</span> rather than symptomatically.
             </h1>
-            <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
-              I'm Alanna Risse. I've spent 15+ years building and shipping websites for brands like West Elm and Timbuk2 —
-              now I focus on breaking them before users do: test automation with Playwright, accessibility audits, and
-              release confidence.
+            <p className="mt-8 max-w-2xl text-xl text-muted-foreground">
+              I'm Alanna Risse. I've worked across the entire product lifecycle, from design to development to testing, which means I catch things specialists miss.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <a href={links.resume} target="_blank" rel="noreferrer" className="btn-primary">View resume</a>
@@ -101,7 +100,11 @@ function Index() {
         </Section>
 
         <Section id="projects" eyebrow="Personal projects" title="Things I've built lately">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-10">
+            {featuredProjects.map((project) => <FeaturedJob key={project.id} job={project} />)}
+          </div>
+          <h3 className="mt-16 font-display text-2xl font-semibold">More personal projects</h3>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {projects.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noreferrer" className="card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card">
                 <img src={p.img} alt={p.name} loading="lazy" className="aspect-[4/3] w-full object-cover object-top" />
@@ -133,10 +136,7 @@ function Index() {
                   </figcaption>
                 </figure>
               ))}
-              <blockquote className="rounded-xl border-l-2 border-primary bg-card p-6">
-                <p className="italic">"Thanks again for mentoring me through the Thinkful pre-work. I recently graduated from General Assembly's software engineering program and thought about how helpful you were at the beginning of my journey."</p>
-                <footer className="mt-3 text-sm text-muted-foreground">— Sarah Moe, 2021</footer>
-              </blockquote>
+              <RotatingQuote />
             </div>
           </div>
         </Section>
