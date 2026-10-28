@@ -3,17 +3,17 @@ var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/alanna/Sites/portfolio-react/src/routes/__root.tsx",
 		children: ["/"],
-		preloads: ["/assets/index-De6nAjrd.js"],
+		preloads: ["/assets/index-BsauStRH.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-De6nAjrd.js"
+			src: "/assets/index-BsauStRH.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/alanna/Sites/portfolio-react/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-CofdbUXJ.js"]
+		preloads: ["/assets/routes-DdWDt8-A.js"]
 	}
 } });
 //#endregion

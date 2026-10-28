@@ -3,7 +3,7 @@ import { HeadContent, Link, Outlet, Scripts, createFileRoute, createRootRouteWit
 import { jsx, jsxs } from "react/jsx-runtime";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 //#region src/styles.css?url
-var styles_default = "/assets/styles-D1fyAVOG.css";
+var styles_default = "/assets/styles-DSQterul.css";
 //#endregion
 //#region src/lib/lovable-error-reporting.ts
 function reportLovableError(error, context = {}) {
@@ -157,7 +157,7 @@ function RootComponent() {
 }
 //#endregion
 //#region src/routes/index.tsx
-var $$splitComponentImporter = () => import("./routes-Bhf5aJ_7.js");
+var $$splitComponentImporter = () => import("./routes-D0zbiGPq.js");
 var TITLE = "Alanna Risse — QA Engineer & Software Engineer in Test";
 var DESC = "Portland-based QA engineer and SDET with 15+ years of web development, accessibility, and Playwright test automation experience.";
 //#endregion

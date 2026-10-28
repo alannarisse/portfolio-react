@@ -143,12 +143,12 @@ var featuredJobs = [
 		],
 		caseStudy: {
 			overview: "BusinessBlocks helped small business owners learn and get support with guides, tools, and resources.",
-			role: "Web developer working on the front end and quality of the Django application.",
+			role: "I inherited their initial Wordpress website and APIs. While maintaining the current site, I researched stacks, hired a junior developer, and built out a flexible Django/Python site with room for the organization to grow.",
 			challenge: "Ship new learning content and features quickly while keeping a growing product stable on AWS.",
 			approach: [
 				"Tested new features and content releases before deployment.",
 				"Checked responsive layouts across desktop and mobile devices.",
-				"Worked with the team to reproduce, document, and verify bug fixes."
+				"Worked with the team to reproduce, document, and verify bug fixes in Jira."
 			],
 			results: ["Stable, growing platform", "Company acquired by AmTrust"],
 			gallery: [{
@@ -253,7 +253,6 @@ var featuredProjects = [{
 			"Built the photo-selection and message flow with Expo, React Native, and TypeScript, including an optional message limited to 280 characters.",
 			"Added sender email verification through signed, expiring links before delivering the message to the recipient.",
 			"Used a separate Node.js/Express API with Resend for email, with rate limits on sending and verification endpoints.",
-			"Addressed iPhone keyboard dismissal, keyboard-aware scrolling, and safe-area navigation so the form remains usable on mobile.",
 			"Added Playwright coverage for image selection, required fields, email validation, message limits, submission, API errors, and the contact form."
 		],
 		results: [
@@ -277,10 +276,10 @@ var projects = [
 		]
 	},
 	{
-		name: "DMV Practice Quiz",
-		url: "https://alannarisse.github.io/quizzes/dmv-practice/",
-		img: `${A}/thumbs/dmv-practice-quiz.png`,
-		desc: "Mostly hand-built quiz app.",
+		name: "Quiz-O-Rama Quiz app collection",
+		url: "https://alannarisse.github.io/quizzes/",
+		img: `${A}/design/quizorama-desktop.png`,
+		desc: "A collection of quizzes in  Javascript",
 		stack: ["Vanilla JS", "GitHub Pages"]
 	},
 	{
@@ -815,10 +814,10 @@ function Index() {
 							children: [
 								/* @__PURE__ */ jsx("p", {
 									className: "eyebrow",
-									children: "Remote, Portland, Oregon · Open to roles"
+									children: "Remote, Portland, Oregon · Open to Development roles"
 								}),
 								/* @__PURE__ */ jsxs("h1", {
-									className: "mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.05] md:text-7xl",
+									className: "mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.05] md:text-6xl",
 									children: [
 										"I naturally look at ",
 										/* @__PURE__ */ jsx("span", {
@@ -834,7 +833,7 @@ function Index() {
 									]
 								}),
 								/* @__PURE__ */ jsx("p", {
-									className: "mt-8 max-w-2xl text-lg text-muted-foreground",
+									className: "mt-8 max-w-2xl text-xl text-muted-foreground",
 									children: "I'm Alanna Risse. I've worked across the entire product lifecycle, from design to development to testing, which means I catch things specialists miss."
 								}),
 								/* @__PURE__ */ jsxs("div", {

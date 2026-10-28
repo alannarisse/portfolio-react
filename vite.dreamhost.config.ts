@@ -1,7 +1,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import type { ConfigEnv } from "vite";
+import { withNativePaths } from "./vite.native-paths.ts";
 
 // Render HTML at build time; DreamHost only needs the client output.
-export default defineConfig({
+const lovableConfig = defineConfig({
   nitro: false,
   tanstackStart: {
     server: { entry: "server" },
@@ -12,3 +14,5 @@ export default defineConfig({
     },
   },
 });
+
+export default async (env: ConfigEnv) => withNativePaths(await lovableConfig(env));
