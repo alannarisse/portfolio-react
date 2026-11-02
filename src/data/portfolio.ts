@@ -122,15 +122,15 @@ export const featuredJobs: Job[] = [
   },
 ];
 
-export const otherJobs = [
-  { name: "Timbuk2", desc: "Messenger bags — web development", img: `${A}/design/timbuk2.png` },
-  { name: "MedNet for Nature Conservancy", desc: "Mediterranean Action Network — data visualization", img: `${A}/design/mednetworkdataViz_veg.jpg` },
-  { name: "House of Bagels", desc: "WordPress web development", img: `${A}/design/hob_final_screen2.png` },
-  { name: "CETI Portland", desc: "Web development and marketing", img: `${A}/design/ceti-institute.png` },
-  { name: "Alignment Therapy PDX", desc: "Webflow site, local SEO, lead generation", img: `${A}/design/alignment-therapy-screen.png`, url: "https://alignmenttherapypdx.com/" },
-  { name: "Anna Fidler", desc: "Artist website, maintained since 2013", img: `${A}/design/annafidler-sq.png`, url: "https://annafidler.com/" },
-  { name: "JJ Wiesler", desc: "Website design", img: `${A}/design/jjwiesler.jpg` },
-  { name: "Button Consignment", desc: "Website and print design", img: `${A}/design/button1.jpg` },
+export const otherJobs: PersonalProject[] = [
+  { details: "Worked on a three-person team redesigning the Timbuk2 e-commerce website, contributing to design, front-end development, database connectivity, catalog entries, and graphics. Hand-coded JSP, HTML, CSS, and JavaScript with PostgreSQL.", stack: ["JSP", "HTML", "CSS", "JavaScript", "PostgreSQL"], name: "Timbuk2", desc: "Messenger bags — web development", img: `${A}/design/timbuk2.png` },
+  { details: "Data visualization work for the Mediterranean Action Network, as part of work for the Nature Conservancy.", stack: ["Data visualization"], name: "MedNet for Nature Conservancy", desc: "Mediterranean Action Network — data visualization", img: `${A}/design/mednetworkdataViz_veg.jpg` },
+  { details: "Created a custom WordPress template from layered Photoshop designs for the San Francisco chain’s 50th-anniversary redesign. The site included motion graphics, an image carousel, merchandise, and content updates, with a focus on accessibility and SEO.", stack: ["WordPress", "Accessibility", "SEO"], name: "House of Bagels", desc: "WordPress web development", img: `${A}/design/hob_final_screen2.png` },
+  { details: "Web development and marketing work for CETI Portland.", stack: ["Web development", "Marketing"], name: "CETI Portland", desc: "Web development and marketing", img: `${A}/design/ceti-institute.png` },
+  { details: "Updated the practice’s website across WordPress and Webflow, improved mobile layouts, simplified content workflows, and supported local SEO and a postcard campaign.", stack: ["Webflow", "WordPress", "Responsive design", "Local SEO"], name: "Alignment Therapy PDX", desc: "Webflow site, local SEO, lead generation", img: `${A}/design/alignment-therapy-screen.png`, url: "https://alignmenttherapypdx.com/" },
+  { details: "Ongoing website maintenance for Pacific Northwest artist Anna Fidler, including content updates, image optimization, and web development. The site is currently hosted on Squarespace.", stack: ["Squarespace", "Content maintenance", "Image optimization"], name: "Anna Fidler", desc: "Artist website, maintained since 2013", img: `${A}/design/annafidler-sq.png`, url: "https://annafidler.com/" },
+  { details: "Website design work for JJ Wiesler.", stack: ["Web design"], name: "JJ Wiesler", desc: "Website design", img: `${A}/design/jjwiesler.jpg` },
+  { details: "Website and print design work for Button Consignment.", stack: ["Web design", "Print design"], name: "Button Consignment", desc: "Website and print design", img: `${A}/design/button1.jpg` },
 ];
 
 export const featuredProjects: Job[] = [
@@ -163,14 +163,23 @@ export const featuredProjects: Job[] = [
   },
 ];
 
-export const projects = [
-  { name: "Quote Keeper", url: "https://quote-keeper.com/", img: `${A}/thumbs/quote-keeper.png`, desc: "Save and organize favorite quotes.", stack: ["Angular", "MySQL", "AI-assisted"] },
-  { name: "Quiz-O-Rama Quiz app collection", url: "https://alannarisse.github.io/quizzes/", img: `${A}/design/quizorama-desktop.png`, desc: "A collection of quizzes in  Javascript", stack: ["Vanilla JS", "GitHub Pages"], },
-  { name: "Wine Finder", url: "http://wine-finder-app.vercel.app/", img: `${A}/thumbs/wine-finder.png`, desc: "Find the right bottle.", stack: ["React", "Vercel", "AI-assisted"] },
-  { name: "Verge Online Store", url: "https://next-ecom-bay.vercel.app/", img: `${A}/design/verge-app-rect-next-ecom.png`, desc: "Hand-coded art store with Stripe payments.", stack: ["React", "Next.js", "Stripe"] },
-  { name: "Scrumptious!", url: "https://scrumptiousmeals.netlify.app/", img: `${A}/design/yumyum-vuejs-api-app.png`, desc: "Recipe app built on a free API.", stack: ["Vue", "Vite", "Netlify"] },
-  { name: "PSU Interactive Media", url: "https://psuinteractivemedia.com/", img: `${A}/design/psuinteractive-website.png`, desc: "Course site for PSU Graphic Design students.", stack: ["Teaching", "Web"] },
-  { name: "Verge PDX", img: `${A}/design/verge-short.png`, desc: "Art curation in Portland — branding, design, development.", stack: ["Branding", "Web"] },
+export type PersonalProject = {
+  name: string;
+  url?: string;
+  img: string;
+  desc: string;
+  stack: string[];
+  details: string;
+};
+
+export const projects: PersonalProject[] = [
+  { details: "A personal app for collecting favorite quotes and keeping them organized. Built with Angular and MySQL, with AI-assisted development.", name: "Quote Keeper", url: "https://quote-keeper.com/", img: `${A}/thumbs/quote-keeper.png`, desc: "Save and organize favorite quotes.", stack: ["Angular", "MySQL", "AI-assisted"] },
+  { details: "A collection of JavaScript quizzes, including Oregon DMV, AWS Cloud Practitioner, CAPM, and ParaPro practice. The quizzes include answer feedback and explanations, with saved progress for returning to an attempt.", name: "Quiz-O-Rama Quiz app collection", url: "https://alannarisse.github.io/quizzes/", img: `${A}/design/quizorama-desktop.png`, desc: "A collection of quizzes in  Javascript", stack: ["Vanilla JS", "GitHub Pages"], },
+  { details: "A React project for exploring wines and finding a bottle. Built with AI-assisted development and hosted on Vercel.", name: "Wine Finder", url: "http://wine-finder-app.vercel.app/", img: `${A}/thumbs/wine-finder.png`, desc: "Find the right bottle.", stack: ["React", "Vercel", "AI-assisted"] },
+  { details: "A hand-coded online art store built with React and Next.js, with Stripe payments.", name: "Verge Online Store", url: "https://next-ecom-bay.vercel.app/", img: `${A}/design/verge-app-rect-next-ecom.png`, desc: "Hand-coded art store with Stripe payments.", stack: ["React", "Next.js", "Stripe"] },
+  { details: "A Vue recipe app that uses a free API to explore meals. Built with Vite and hosted on Netlify.", name: "Scrumptious!", url: "https://scrumptiousmeals.netlify.app/", img: `${A}/design/yumyum-vuejs-api-app.png`, desc: "Recipe app built on a free API.", stack: ["Vue", "Vite", "Netlify"] },
+  { details: "A course website for Portland State University Graphic Design students, supporting interactive media teaching and web development.", name: "PSU Interactive Media", url: "https://psuinteractivemedia.com/", img: `${A}/design/psuinteractive-website.png`, desc: "Course site for PSU Graphic Design students.", stack: ["Teaching", "Web"] },
+  { details: "An art curation project in Portland, bringing together branding, design, and web development.", name: "Verge PDX", img: `${A}/design/verge-short.png`, desc: "Art curation in Portland — branding, design, development.", stack: ["Branding", "Web"] },
 ];
 
 export const talks = [

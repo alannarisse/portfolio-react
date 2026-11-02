@@ -1,3 +1,4 @@
+import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { RotatingQuote } from "@/components/portfolio/RotatingQuote";
 import { createFileRoute } from "@tanstack/react-router";
 import { featuredJobs, featuredProjects, links, otherJobs, projects, skills, talks, writing } from "@/data/portfolio";
@@ -15,6 +16,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://portfolio.alannarisse.com/portfolio-og.png" },
+      { property: "og:url", content: "https://portfolio.alannarisse.com/" },
+    { property: "og:image:type", content: "image/png" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -84,18 +90,7 @@ function Index() {
           </div>
           <h3 className="mt-20 font-display text-2xl font-semibold">More clients</h3>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {otherJobs.map((j) => {
-              const inner = (
-                <>
-                  <img src={j.img} alt={j.name} loading="lazy" className="aspect-[4/3] w-full rounded-lg border border-border object-cover object-top transition group-hover:border-primary" />
-                  <h4 className="mt-3 font-display font-medium">{j.name}</h4>
-                  <p className="text-sm text-muted-foreground">{j.desc}</p>
-                </>
-              );
-              return j.url
-                ? <a key={j.name} href={j.url} target="_blank" rel="noreferrer" className="group">{inner}</a>
-                : <div key={j.name} className="group">{inner}</div>;
-            })}
+            {otherJobs.map((job) => <ProjectCard key={job.name} project={job} kind="client" />)}
           </div>
         </Section>
 
@@ -105,16 +100,7 @@ function Index() {
           </div>
           <h3 className="mt-16 font-display text-2xl font-semibold">More personal projects</h3>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.map((p) => (
-              <a key={p.name} href={p.url} target="_blank" rel="noreferrer" className="card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card">
-                <img src={p.img} alt={p.name} loading="lazy" className="aspect-[4/3] w-full object-cover object-top" />
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-display font-semibold group-hover:text-primary">{p.name}</h3>
-                  <p className="mt-1 flex-1 text-sm text-muted-foreground">{p.desc}</p>
-                  <ul className="mt-4 flex flex-wrap gap-1.5">{p.stack.map((s) => <li key={s} className="chip text-xs">{s}</li>)}</ul>
-                </div>
-              </a>
-            ))}
+            {projects.map((project) => <ProjectCard key={project.name} project={project} />)}
           </div>
         </Section>
 

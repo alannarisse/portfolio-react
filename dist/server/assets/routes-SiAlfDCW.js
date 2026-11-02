@@ -1,5 +1,181 @@
+import * as React from "react";
 import { useEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+//#region src/lib/utils.ts
+function cn(...inputs) {
+	return twMerge(clsx(inputs));
+}
+//#endregion
+//#region src/components/ui/dialog.tsx
+var Dialog = DialogPrimitive.Root;
+var DialogTrigger = DialogPrimitive.Trigger;
+var DialogPortal = DialogPrimitive.Portal;
+var DialogOverlay = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(DialogPrimitive.Overlay, {
+	ref,
+	className: cn("fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className),
+	...props
+}));
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+var DialogContent = React.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs(DialogPortal, { children: [/* @__PURE__ */ jsx(DialogOverlay, {}), /* @__PURE__ */ jsxs(DialogPrimitive.Content, {
+	ref,
+	className: cn("fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg", className),
+	...props,
+	children: [children, /* @__PURE__ */ jsxs(DialogPrimitive.Close, {
+		className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background cursor-pointer transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
+		children: [/* @__PURE__ */ jsx(X, { className: "h-4 w-4" }), /* @__PURE__ */ jsx("span", {
+			className: "sr-only",
+			children: "Close"
+		})]
+	})]
+})] }));
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+var DialogHeader = ({ className, ...props }) => /* @__PURE__ */ jsx("div", {
+	className: cn("flex flex-col space-y-1.5 text-center sm:text-left", className),
+	...props
+});
+DialogHeader.displayName = "DialogHeader";
+var DialogFooter = ({ className, ...props }) => /* @__PURE__ */ jsx("div", {
+	className: cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className),
+	...props
+});
+DialogFooter.displayName = "DialogFooter";
+var DialogTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(DialogPrimitive.Title, {
+	ref,
+	className: cn("text-lg font-semibold leading-none tracking-tight", className),
+	...props
+}));
+DialogTitle.displayName = DialogPrimitive.Title.displayName;
+var DialogDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(DialogPrimitive.Description, {
+	ref,
+	className: cn("text-sm text-muted-foreground", className),
+	...props
+}));
+DialogDescription.displayName = DialogPrimitive.Description.displayName;
+//#endregion
+//#region src/components/portfolio/ProjectCard.tsx
+function ProjectCard({ project, kind = "project" }) {
+	const visitLabel = kind === "client" ? "Visit website" : "Visit project";
+	const [open, setOpen] = useState(false);
+	useEffect(() => {
+		if (!open) return;
+		const initialY = window.scrollY;
+		const onScroll = () => {
+			if (Math.abs(window.scrollY - initialY) > 100) setOpen(false);
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => window.removeEventListener("scroll", onScroll);
+	}, [open]);
+	return /* @__PURE__ */ jsxs(Dialog, {
+		open,
+		onOpenChange: setOpen,
+		children: [/* @__PURE__ */ jsxs("article", {
+			className: "card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card",
+			children: [
+				/* @__PURE__ */ jsx(DialogTrigger, {
+					asChild: true,
+					children: /* @__PURE__ */ jsxs("button", {
+						type: "button",
+						className: "flex flex-1 flex-col text-left",
+						"aria-label": `More about ${project.name}`,
+						children: [/* @__PURE__ */ jsx("img", {
+							src: project.img,
+							alt: "",
+							loading: "lazy",
+							className: "aspect-[4/3] w-full object-cover object-top"
+						}), /* @__PURE__ */ jsxs("span", {
+							className: "flex flex-1 flex-col p-5",
+							children: [
+								/* @__PURE__ */ jsx("span", {
+									role: "heading",
+									"aria-level": kind === "client" ? 4 : 3,
+									className: "font-display font-semibold group-hover:text-primary",
+									children: project.name
+								}),
+								/* @__PURE__ */ jsx("span", {
+									className: "mt-1 flex-1 text-sm text-muted-foreground",
+									children: project.desc
+								}),
+								/* @__PURE__ */ jsxs("span", {
+									className: "mt-4 text-sm text-primary",
+									children: [kind === "client" ? "Client details" : "Project details", " →"]
+								})
+							]
+						})]
+					})
+				}),
+				/* @__PURE__ */ jsx("ul", {
+					className: "flex flex-wrap gap-1.5 px-5 pb-5",
+					children: project.stack.map((item) => /* @__PURE__ */ jsx("li", {
+						className: "chip text-xs",
+						children: item
+					}, item))
+				}),
+				project.url && /* @__PURE__ */ jsxs("a", {
+					href: project.url,
+					target: "_blank",
+					rel: "noreferrer",
+					className: "mx-5 mb-5 text-sm text-primary underline",
+					children: [
+						visitLabel,
+						" ↗",
+						/* @__PURE__ */ jsxs("span", {
+							className: "sr-only",
+							children: [
+								": ",
+								project.name,
+								" (opens in a new tab)"
+							]
+						})
+					]
+				})
+			]
+		}), /* @__PURE__ */ jsx(DialogContent, {
+			className: "max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-xl motion-reduce:animate-none",
+			children: /* @__PURE__ */ jsxs("aside", {
+				className: "space-y-5",
+				children: [
+					/* @__PURE__ */ jsx(DialogTitle, {
+						className: "pr-8 font-display text-2xl",
+						children: project.name
+					}),
+					/* @__PURE__ */ jsx(DialogDescription, { children: project.details }),
+					/* @__PURE__ */ jsx("img", {
+						src: project.img,
+						alt: `${project.name} preview`,
+						className: "max-h-[50dvh] w-full rounded-lg border border-border object-contain"
+					}),
+					/* @__PURE__ */ jsx("ul", {
+						className: "flex flex-wrap gap-2",
+						"aria-label": kind === "client" ? "Skills and tools" : "Technologies",
+						children: project.stack.map((item) => /* @__PURE__ */ jsx("li", {
+							className: "chip",
+							children: item
+						}, item))
+					}),
+					project.url && /* @__PURE__ */ jsxs("a", {
+						href: project.url,
+						target: "_blank",
+						rel: "noreferrer",
+						className: "btn-primary inline-flex",
+						children: [
+							visitLabel,
+							" ↗",
+							/* @__PURE__ */ jsx("span", {
+								className: "sr-only",
+								children: " (opens in a new tab)"
+							})
+						]
+					})
+				]
+			})
+		})]
+	});
+}
+//#endregion
 //#region src/data/portfolio.ts
 var A = "/assets";
 var links = {
@@ -187,43 +363,78 @@ var featuredJobs = [
 ];
 var otherJobs = [
 	{
+		details: "Worked on a three-person team redesigning the Timbuk2 e-commerce website, contributing to design, front-end development, database connectivity, catalog entries, and graphics. Hand-coded JSP, HTML, CSS, and JavaScript with PostgreSQL.",
+		stack: [
+			"JSP",
+			"HTML",
+			"CSS",
+			"JavaScript",
+			"PostgreSQL"
+		],
 		name: "Timbuk2",
 		desc: "Messenger bags — web development",
 		img: `${A}/design/timbuk2.png`
 	},
 	{
+		details: "Data visualization work for the Mediterranean Action Network, as part of work for the Nature Conservancy.",
+		stack: ["Data visualization"],
 		name: "MedNet for Nature Conservancy",
 		desc: "Mediterranean Action Network — data visualization",
 		img: `${A}/design/mednetworkdataViz_veg.jpg`
 	},
 	{
+		details: "Created a custom WordPress template from layered Photoshop designs for the San Francisco chain’s 50th-anniversary redesign. The site included motion graphics, an image carousel, merchandise, and content updates, with a focus on accessibility and SEO.",
+		stack: [
+			"WordPress",
+			"Accessibility",
+			"SEO"
+		],
 		name: "House of Bagels",
 		desc: "WordPress web development",
 		img: `${A}/design/hob_final_screen2.png`
 	},
 	{
+		details: "Web development and marketing work for CETI Portland.",
+		stack: ["Web development", "Marketing"],
 		name: "CETI Portland",
 		desc: "Web development and marketing",
 		img: `${A}/design/ceti-institute.png`
 	},
 	{
+		details: "Updated the practice’s website across WordPress and Webflow, improved mobile layouts, simplified content workflows, and supported local SEO and a postcard campaign.",
+		stack: [
+			"Webflow",
+			"WordPress",
+			"Responsive design",
+			"Local SEO"
+		],
 		name: "Alignment Therapy PDX",
 		desc: "Webflow site, local SEO, lead generation",
 		img: `${A}/design/alignment-therapy-screen.png`,
 		url: "https://alignmenttherapypdx.com/"
 	},
 	{
+		details: "Ongoing website maintenance for Pacific Northwest artist Anna Fidler, including content updates, image optimization, and web development. The site is currently hosted on Squarespace.",
+		stack: [
+			"Squarespace",
+			"Content maintenance",
+			"Image optimization"
+		],
 		name: "Anna Fidler",
 		desc: "Artist website, maintained since 2013",
 		img: `${A}/design/annafidler-sq.png`,
 		url: "https://annafidler.com/"
 	},
 	{
+		details: "Website design work for JJ Wiesler.",
+		stack: ["Web design"],
 		name: "JJ Wiesler",
 		desc: "Website design",
 		img: `${A}/design/jjwiesler.jpg`
 	},
 	{
+		details: "Website and print design work for Button Consignment.",
+		stack: ["Web design", "Print design"],
 		name: "Button Consignment",
 		desc: "Website and print design",
 		img: `${A}/design/button1.jpg`
@@ -265,6 +476,7 @@ var featuredProjects = [{
 }];
 var projects = [
 	{
+		details: "A personal app for collecting favorite quotes and keeping them organized. Built with Angular and MySQL, with AI-assisted development.",
 		name: "Quote Keeper",
 		url: "https://quote-keeper.com/",
 		img: `${A}/thumbs/quote-keeper.png`,
@@ -276,6 +488,7 @@ var projects = [
 		]
 	},
 	{
+		details: "A collection of JavaScript quizzes, including Oregon DMV, AWS Cloud Practitioner, CAPM, and ParaPro practice. The quizzes include answer feedback and explanations, with saved progress for returning to an attempt.",
 		name: "Quiz-O-Rama Quiz app collection",
 		url: "https://alannarisse.github.io/quizzes/",
 		img: `${A}/design/quizorama-desktop.png`,
@@ -283,6 +496,7 @@ var projects = [
 		stack: ["Vanilla JS", "GitHub Pages"]
 	},
 	{
+		details: "A React project for exploring wines and finding a bottle. Built with AI-assisted development and hosted on Vercel.",
 		name: "Wine Finder",
 		url: "http://wine-finder-app.vercel.app/",
 		img: `${A}/thumbs/wine-finder.png`,
@@ -294,6 +508,7 @@ var projects = [
 		]
 	},
 	{
+		details: "A hand-coded online art store built with React and Next.js, with Stripe payments.",
 		name: "Verge Online Store",
 		url: "https://next-ecom-bay.vercel.app/",
 		img: `${A}/design/verge-app-rect-next-ecom.png`,
@@ -305,6 +520,7 @@ var projects = [
 		]
 	},
 	{
+		details: "A Vue recipe app that uses a free API to explore meals. Built with Vite and hosted on Netlify.",
 		name: "Scrumptious!",
 		url: "https://scrumptiousmeals.netlify.app/",
 		img: `${A}/design/yumyum-vuejs-api-app.png`,
@@ -316,6 +532,7 @@ var projects = [
 		]
 	},
 	{
+		details: "A course website for Portland State University Graphic Design students, supporting interactive media teaching and web development.",
 		name: "PSU Interactive Media",
 		url: "https://psuinteractivemedia.com/",
 		img: `${A}/design/psuinteractive-website.png`,
@@ -323,6 +540,7 @@ var projects = [
 		stack: ["Teaching", "Web"]
 	},
 	{
+		details: "An art curation project in Portland, bringing together branding, design, and web development.",
 		name: "Verge PDX",
 		img: `${A}/design/verge-short.png`,
 		desc: "Art curation in Portland — branding, design, development.",
@@ -899,34 +1117,10 @@ function Index() {
 							}),
 							/* @__PURE__ */ jsx("div", {
 								className: "mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
-								children: otherJobs.map((j) => {
-									const inner = /* @__PURE__ */ jsxs(Fragment, { children: [
-										/* @__PURE__ */ jsx("img", {
-											src: j.img,
-											alt: j.name,
-											loading: "lazy",
-											className: "aspect-[4/3] w-full rounded-lg border border-border object-cover object-top transition group-hover:border-primary"
-										}),
-										/* @__PURE__ */ jsx("h4", {
-											className: "mt-3 font-display font-medium",
-											children: j.name
-										}),
-										/* @__PURE__ */ jsx("p", {
-											className: "text-sm text-muted-foreground",
-											children: j.desc
-										})
-									] });
-									return j.url ? /* @__PURE__ */ jsx("a", {
-										href: j.url,
-										target: "_blank",
-										rel: "noreferrer",
-										className: "group",
-										children: inner
-									}, j.name) : /* @__PURE__ */ jsx("div", {
-										className: "group",
-										children: inner
-									}, j.name);
-								})
+								children: otherJobs.map((job) => /* @__PURE__ */ jsx(ProjectCard, {
+									project: job,
+									kind: "client"
+								}, job.name))
 							})
 						]
 					}),
@@ -945,37 +1139,7 @@ function Index() {
 							}),
 							/* @__PURE__ */ jsx("div", {
 								className: "mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
-								children: projects.map((p) => /* @__PURE__ */ jsxs("a", {
-									href: p.url,
-									target: "_blank",
-									rel: "noreferrer",
-									className: "card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card",
-									children: [/* @__PURE__ */ jsx("img", {
-										src: p.img,
-										alt: p.name,
-										loading: "lazy",
-										className: "aspect-[4/3] w-full object-cover object-top"
-									}), /* @__PURE__ */ jsxs("div", {
-										className: "flex flex-1 flex-col p-5",
-										children: [
-											/* @__PURE__ */ jsx("h3", {
-												className: "font-display font-semibold group-hover:text-primary",
-												children: p.name
-											}),
-											/* @__PURE__ */ jsx("p", {
-												className: "mt-1 flex-1 text-sm text-muted-foreground",
-												children: p.desc
-											}),
-											/* @__PURE__ */ jsx("ul", {
-												className: "mt-4 flex flex-wrap gap-1.5",
-												children: p.stack.map((s) => /* @__PURE__ */ jsx("li", {
-													className: "chip text-xs",
-													children: s
-												}, s))
-											})
-										]
-									})]
-								}, p.name))
+								children: projects.map((project) => /* @__PURE__ */ jsx(ProjectCard, { project }, project.name))
 							})
 						]
 					}),
